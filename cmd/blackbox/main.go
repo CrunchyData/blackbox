@@ -10,6 +10,7 @@ import (
 	"github.com/tedsuo/ifrit/sigmon"
 
 	"github.com/cloudfoundry/blackbox"
+	"github.com/cloudfoundry/blackbox/syslog"
 )
 
 var configPath = flag.String(
