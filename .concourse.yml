@@ -4,7 +4,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/cloudfoundry/blackbox.git
+    uri: https://github.com/CrunchyData/blackbox.git
 
 jobs:
 - name: tests
@@ -33,7 +33,7 @@ jobs:
 
             workspace=$PWD
             mkdir -p $GOPATH/src/github.com/cloudfoundry
-            ln -s $workspace/blackbox $GOPATH/src/github.com/cloudfoundry/blackbox
+            ln -s $workspace/blackbox $GOPATH/src/github.com/CrunchyData/blackbox
             go get github.com/onsi/ginkgo
             go get github.com/hpcloud/tail
             go get github.com/onsi/gomega

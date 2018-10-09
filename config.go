@@ -4,13 +4,14 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/cloudfoundry/blackbox/syslog"
+	"github.com/CrunchyData/blackbox/syslog"
 	"gopkg.in/yaml.v2"
 )
 
 type SyslogConfig struct {
 	Destination syslog.Drain `yaml:"destination"`
 	SourceDir   string       `yaml:"source_dir"`
+	LogSuffix   string       `yaml:"log_suffix"`
 }
 
 type Config struct {
