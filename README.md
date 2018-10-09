@@ -7,6 +7,7 @@
 Blackbox will tail all files in sub-directories of a specified `source_dir`, and forward any new lines to a syslog server.
 
 This is currently used in [syslog-release][syslog] and [windows-syslog-release][windows-syslog]. 
+
 ## Usage
 
 ```
@@ -47,7 +48,6 @@ Currently the priority and facility are hardcoded to `INFO` and `user`.
 ```
 go get -u github.com/cloudfoundry/blackbox/cmd/blackbox
 ```
-
 [CI]: https://syslog.ci.cf-app.com
 [tracker]: https://www.pivotaltracker.com/n/projects/2126318
 [windows-syslog]: https://github.com/cloudfoundry/windows-syslog-release
