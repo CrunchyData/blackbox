@@ -11,6 +11,7 @@ import (
 type SyslogConfig struct {
 	Destination syslog.Drain `yaml:"destination"`
 	SourceDir   string       `yaml:"source_dir"`
+	LogSuffix   string       `yaml:"log_suffix"`
 }
 
 type Config struct {

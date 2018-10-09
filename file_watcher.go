@@ -18,16 +18,17 @@ type fileWatcher struct {
 	logger *log.Logger
 
 	sourceDir          string
+	logSuffix          string
 	dynamicGroupClient grouper.DynamicClient
 	hostname           string
 	structuredData     string
-
-	drain syslog.Drain
+	drain              syslog.Drain
 }
 
 func NewFileWatcher(
 	logger *log.Logger,
 	sourceDir string,
+	logSuffix string,
 	dynamicGroupClient grouper.DynamicClient,
 	drain syslog.Drain,
 	hostname string,
@@ -36,6 +37,7 @@ func NewFileWatcher(
 	return &fileWatcher{
 		logger:             logger,
 		sourceDir:          sourceDir,
+		logSuffix:          logSuffix,
 		dynamicGroupClient: dynamicGroupClient,
 		drain:              drain,
 		hostname:           hostname,
@@ -73,7 +75,7 @@ func (f *fileWatcher) Watch() {
 
 func (f *fileWatcher) findLogsToWatch(tag string, filePath string, file os.FileInfo) {
 	if !file.IsDir() {
-		if strings.HasSuffix(file.Name(), ".log") {
+		if strings.HasSuffix(file.Name(), f.logSuffix) {
 			if _, found := f.dynamicGroupClient.Get(filePath); !found {
 				f.dynamicGroupClient.Inserter() <- f.memberForFile(filePath)
 			}
