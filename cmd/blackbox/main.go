@@ -9,7 +9,7 @@ import (
 	"github.com/tedsuo/ifrit/grouper"
 	"github.com/tedsuo/ifrit/sigmon"
 
-	"github.com/cloudfoundry/blackbox"
+	"github.com/CrunchyData/blackbox"
 )
 
 var configPath = flag.String(
@@ -36,7 +36,7 @@ func main() {
 	running := ifrit.Invoke(sigmon.New(group))
 
 	go func() {
-		fileWatcher := blackbox.NewFileWatcher(logger, config.Syslog.SourceDir, group.Client(), config.Syslog.Destination, config.Hostname, config.StructuredData)
+		fileWatcher := blackbox.NewFileWatcher(logger, config.Syslog.SourceDir, config.Syslog.LogSuffix, group.Client(), config.Syslog.Destination, config.Hostname, config.StructuredData)
 		fileWatcher.Watch()
 	}()
 

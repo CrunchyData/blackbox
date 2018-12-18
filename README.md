@@ -45,7 +45,7 @@ Currently the priority and facility are hardcoded to `INFO` and `user`.
 ## Installation
 
 ```
-go get -u github.com/cloudfoundry/blackbox/cmd/blackbox
+go get -u github.com/CrunchyData/blackbox/cmd/blackbox
 ```
 
 [CI]: https://syslog.ci.cf-app.com
